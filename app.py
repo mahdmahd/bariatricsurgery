@@ -12,15 +12,19 @@ st.title('Weight Prediction After Bariatric Surgery')
 # Create a form to input the new patient data
 with st.form("prediction_form"):
     timestamp = st.number_input('Timestamp', min_value=0)
+    st.write("days after Bariatric Surgery")
     sex = st.selectbox('Sex', options=[1, 2])
+    st.write("1->Male , 2->Female")
     age = st.number_input('Age', min_value=0)
     times_of_operation = st.number_input('Times of Operation', min_value=0)
     height = st.number_input('Height', min_value=0)
     weight = st.number_input('Weight', min_value=0)
     bmi = weight / (((height+0.0000001)/100)*((height+0.0000001)/100))
     st.write(f"BMI: {bmi}")
-    alcohol_lookup = st.selectbox('Alcohol Lookup', options=[0, 1])
-    smoking_lookup = st.selectbox('Smoking Lookup', options=[0, 1])
+    alcohol_lookup = st.selectbox('Alcohol Lookup', options=[0, 1,2,3,4])
+    st.write("0->Non-Drinker , 1->Ex-Drinker , 2->Rare-Drinker , 3-> Drinker , 4 ->Heavy Drinker")
+    smoking_lookup = st.selectbox('Smoking Lookup', options=[0, 1,2,3,4,5,6,7,8])
+    st.write("0->Never Smoked , 1->Ex-Smoker , 2->Rare Smoker , 3-> Occasional Smoker , 4 ->Smoker , 5->Passive Smoker , 6-><20 cigar Per Day , 7->20 cigar per Day , 8-><20 per cigar Day")
     comorbidities = {
         'T2DM': st.selectbox('T2DM', options=[0, 1]),
         '100FBS125': st.selectbox('100FBS125', options=[0, 1]),
@@ -117,6 +121,7 @@ with st.form("prediction_form"):
         'Warfarin': st.selectbox('Warfarin', options=[0, 1])
     }
     surgery_type = st.selectbox('Surgery Type', options=[5, 6, 8])
+    st.write("Type 5->Gastric Sleeve , Type 6->Mini Gastric Bypass , Type 8->RYGastric Bypass")
     
     submitted = st.form_submit_button("Predict")
 

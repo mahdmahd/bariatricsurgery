@@ -17,7 +17,8 @@ with st.form("prediction_form"):
     times_of_operation = st.number_input('Times of Operation', min_value=0)
     height = st.number_input('Height', min_value=0)
     weight = st.number_input('Weight', min_value=0)
-    bmi = st.number_input('BMI', min_value=0.0)
+    bmi = weight / (((height+0.0000001)/100)*((height+0.0000001)/100))
+    st.write(f"BMI: {bmi}")
     alcohol_lookup = st.selectbox('Alcohol Lookup', options=[0, 1])
     smoking_lookup = st.selectbox('Smoking Lookup', options=[0, 1])
     comorbidities = {
